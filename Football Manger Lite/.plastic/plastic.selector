@@ -1,0 +1,4 @@
+repository "Football-Manger-Lite@ARAGNOT@cloud"
+  path "/"
+    br "/main"
+    co "/main"
