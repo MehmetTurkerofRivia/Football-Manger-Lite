@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88fc3224c8e1dd24fa23d64ff60a8fdb, type: 3}
   m_Name: NewPlayerCard
   m_EditorClassIdentifier: 
-  playerName: 
+  playerName: Mehmet
   shoot: 0
   dribbling: 0
   pas: 0
