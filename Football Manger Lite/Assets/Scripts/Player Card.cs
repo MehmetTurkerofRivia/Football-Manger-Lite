@@ -11,16 +11,30 @@ public class PlayerCard : MonoBehaviour
     public Text aggressionText;
     public Text paceText;
     public Text markingText;
+    public Text ValueText;
 
-    public void SetPlayer(PlayerCardData player)
+
+    public PlayerCardData ShowingCard;
+
+    public string playerName;
+    public int Value;
+    public int shoot;
+    public int dribbling;
+    public int pas;
+    public int reflex;
+    public int aggression;
+    public int pace;
+    public int marking;
+    public void SetPlayer()
     {
-        playerNameText.text = player.playerName;
-        shootText.text = "Shoot: " + player.shoot.ToString();
-        dribblingText.text = "Dribbling: " + player.dribbling.ToString();
-        pasText.text = "Pass: " + player.pas.ToString();
-        reflexText.text = "Reflex: " + player.reflex.ToString();
-        aggressionText.text = "Aggression: " + player.aggression.ToString();
-        paceText.text = "Pace: " + player.pace.ToString();
-        markingText.text = "Marking: " + player.marking.ToString();
+        playerNameText.text = ShowingCard.playerName;
+        shootText.text = "Shoot: " + ShowingCard.shoot.ToString();
+        dribblingText.text = "Dribbling: " + ShowingCard.dribbling.ToString();
+        pasText.text = "Pass: " + ShowingCard.pas.ToString();
+        reflexText.text = "Reflex: " + ShowingCard.reflex.ToString();
+        aggressionText.text = "Aggression: " + ShowingCard.aggression.ToString();
+        paceText.text = "Pace: " + ShowingCard.pace.ToString();
+        markingText.text = "Marking: " + ShowingCard.marking.ToString();           
+        ValueText.text = "Price: " + ShowingCard.value.ToString();
     }
 }

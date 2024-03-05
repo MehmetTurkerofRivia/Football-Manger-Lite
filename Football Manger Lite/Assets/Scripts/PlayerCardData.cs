@@ -11,4 +11,5 @@ public class PlayerCardData : ScriptableObject
     public int aggression;
     public int pace;
     public int marking;
+    public int value;
 }
