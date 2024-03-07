@@ -10,13 +10,13 @@ public class CardManager : MonoBehaviour
     public List<PlayerCardData> PlayerPurchasingPool = new List<PlayerCardData>();
     private List<PlayerCard> ShowingCard = new List<PlayerCard>();
     [SerializeField] PlayerCard playerCardPrefab;
-    [SerializeField] GameObject ButtonpPF;
-    private Text PlayerValueText;
     private PlayerCard currentPlayerCard;
     private void Start()
     {
         for (int i = 0; i < 1000; i++)
-            GenerateRandomCardData();
+            GenerateRandomCardData();   
+
+        ShowRandomCard();
     }
 
     public void GenerateRandomCardData()
@@ -24,7 +24,6 @@ public class CardManager : MonoBehaviour
         PlayerCardData randomCardData = CreateRandomCard();
         generatedCards.Add(randomCardData);
     }
-
     private PlayerCardData CreateRandomCard()
     {
         string[] names = {"Ahmet", "Mehmet", "Mustafa", "Ali", "Osman", "İbrahim", "Hüseyin", "Hasan", "İsmail", "Yusuf",
@@ -49,25 +48,17 @@ public class CardManager : MonoBehaviour
         randomCard.value = 28 * (randomCard.shoot + randomCard.dribbling + randomCard.pas + randomCard.reflex + randomCard.aggression + randomCard.pace + randomCard.marking);
         return randomCard;
     }
-
     private void ShowRandomCard()
     {
-        if (generatedCards.Count == 0)
-        {
-            Debug.LogWarning("There are no cards to show.");
-            return;
-        }
         for (int i = 0; i < cardPositions.Length; i++)
         {                                                       
             int randomIndex = Random.Range(0, generatedCards.Count);
             PlayerCardData cardData = generatedCards[randomIndex];
-            currentPlayerCard = Instantiate(playerCardPrefab, cardPositions[i]); // Yeni kartı oluştur
-            ButtonpPF = Instantiate(ButtonpPF, cardPositions[i]);
+            currentPlayerCard = Instantiate(playerCardPrefab, cardPositions[i]);
             currentPlayerCard.SetPlayer(cardData);
             ShowingCard.Add(currentPlayerCard);
         }
     }
-
     public void Refresh()
     {
         foreach (PlayerCard card in ShowingCard)
@@ -76,10 +67,9 @@ public class CardManager : MonoBehaviour
         }
         ShowingCard.Clear();
         ShowRandomCard();
-    }   
-    
+    }
     public void Purchasing(PlayerCardData cardData)
     {
-        PlayerPurchasingPool.Add(cardData);
+        PlayerPurchasingPool.Add(cardData);           
     }
 }
