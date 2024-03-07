@@ -10,7 +10,7 @@ public class CardManager : MonoBehaviour
     public List<PlayerCardData> PlayerPurchasingPool = new List<PlayerCardData>();
     private List<PlayerCard> ShowingCard = new List<PlayerCard>();
     [SerializeField] PlayerCard playerCardPrefab;
-    [SerializeField] GameObject ButtonpPF;
+    [SerializeField] GameObject ButtonPF;
     private Text PlayerValueText;
     private PlayerCard currentPlayerCard;
     private void Start()
@@ -61,9 +61,9 @@ public class CardManager : MonoBehaviour
         {                                                       
             int randomIndex = Random.Range(0, generatedCards.Count);
             PlayerCardData cardData = generatedCards[randomIndex];
-            currentPlayerCard = Instantiate(playerCardPrefab, cardPositions[i]); // Yeni kartı oluştur
-            ButtonpPF = Instantiate(ButtonpPF, cardPositions[i]);
-            currentPlayerCard.SetPlayer(cardData);
+            currentPlayerCard = Instantiate(playerCardPrefab, cardPositions[i]);
+            //GameObject button = Instantiate(ButtonPF, cardPositions[i]);
+            //// button.GetComponent<Button>().onClick.AddListener(() => Purchasing(cardData)); // Butonun tıklama olayına Purchasing fonksiyonunu ekle
             ShowingCard.Add(currentPlayerCard);
         }
     }
