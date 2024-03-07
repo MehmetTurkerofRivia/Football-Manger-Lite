@@ -4,8 +4,11 @@ using UnityEngine.UI;
 public class PlayerCard : MonoBehaviour
 {
     public Text[] cardTexts;
+    public PlayerCardData ShowingCard;
+
     public void SetPlayer(PlayerCardData cardData)
     {
+        ShowingCard = cardData;
         cardTexts[0].text = cardData.playerName;
         cardTexts[1].text = "Shoot: " + cardData.shoot.ToString();
         cardTexts[2].text = "Dribbling: " + cardData.dribbling.ToString();

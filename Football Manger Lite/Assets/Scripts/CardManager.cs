@@ -1,18 +1,22 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class CardManager : MonoBehaviour
 {
     public Transform[] cardPositions;
     public List<PlayerCardData> generatedCards = new List<PlayerCardData>();
     public List<PlayerCardData> PlayerPurchasingPool = new List<PlayerCardData>();
+<<<<<<< HEAD
     private List<PlayerCard> ShowingCard = new List<PlayerCard>();
     [SerializeField] PlayerCard playerCardPrefab;
     [SerializeField] GameObject ButtonPF;
     private Text PlayerValueText;
+=======
+    public PlayerCard playerCardPrefab;
+>>>>>>> parent of 773f0de (Buton hariç her şey tamam)
     private PlayerCard currentPlayerCard;
+    private int rulet;
+
     private void Start()
     {
         for (int i = 0; i < 1000; i++)
@@ -57,6 +61,7 @@ public class CardManager : MonoBehaviour
             Debug.LogWarning("There are no cards to show.");
             return;
         }
+<<<<<<< HEAD
         for (int i = 0; i < cardPositions.Length; i++)
         {                                                       
             int randomIndex = Random.Range(0, generatedCards.Count);
@@ -66,20 +71,24 @@ public class CardManager : MonoBehaviour
             //// button.GetComponent<Button>().onClick.AddListener(() => Purchasing(cardData)); // Butonun tıklama olayına Purchasing fonksiyonunu ekle
             ShowingCard.Add(currentPlayerCard);
         }
+=======
+        int rulet = Random.Range(0, generatedCards.Count);
+        ShowCard(generatedCards[rulet]);
+    }
+
+    public void ShowCard(PlayerCardData cardData)
+    {
+        if (currentPlayerCard != null)
+            Destroy(currentPlayerCard.gameObject); // Önceki kartı yok et
+
+        currentPlayerCard = Instantiate(playerCardPrefab, cardPositions[0]); // Yeni kartı oluştur
+        currentPlayerCard.SetPlayer(cardData);
+        Debug.Log("Refreshed " + cardData.playerName + " No: " + rulet);
+>>>>>>> parent of 773f0de (Buton hariç her şey tamam)
     }
 
     public void Refresh()
     {
-        foreach (PlayerCard card in ShowingCard)
-        {
-            Destroy(card.gameObject);
-        }
-        ShowingCard.Clear();
         ShowRandomCard();
-    }   
-    
-    public void Purchasing(PlayerCardData cardData)
-    {
-        PlayerPurchasingPool.Add(cardData);
     }
 }
