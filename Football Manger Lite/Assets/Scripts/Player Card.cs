@@ -3,38 +3,20 @@ using UnityEngine.UI;
 
 public class PlayerCard : MonoBehaviour
 {
-    public Text playerNameText;
-    public Text shootText;
-    public Text dribblingText;
-    public Text pasText;
-    public Text reflexText;
-    public Text aggressionText;
-    public Text paceText;
-    public Text markingText;
-    public Text ValueText;
-
-
+    public Text[] cardTexts;
     public PlayerCardData ShowingCard;
 
-    public string playerName;
-    public int Value;
-    public int shoot;
-    public int dribbling;
-    public int pas;
-    public int reflex;
-    public int aggression;
-    public int pace;
-    public int marking;
-    public void SetPlayer()
+    public void SetPlayer(PlayerCardData cardData)
     {
-        playerNameText.text = ShowingCard.playerName;
-        shootText.text = "Shoot: " + ShowingCard.shoot.ToString();
-        dribblingText.text = "Dribbling: " + ShowingCard.dribbling.ToString();
-        pasText.text = "Pass: " + ShowingCard.pas.ToString();
-        reflexText.text = "Reflex: " + ShowingCard.reflex.ToString();
-        aggressionText.text = "Aggression: " + ShowingCard.aggression.ToString();
-        paceText.text = "Pace: " + ShowingCard.pace.ToString();
-        markingText.text = "Marking: " + ShowingCard.marking.ToString();           
-        ValueText.text = "Price: " + ShowingCard.value.ToString();
+        ShowingCard = cardData;
+        cardTexts[0].text = cardData.playerName;
+        cardTexts[1].text = "Shoot: " + cardData.shoot.ToString();
+        cardTexts[2].text = "Dribbling: " + cardData.dribbling.ToString();
+        cardTexts[3].text = "Pass: " + cardData.pas.ToString();
+        cardTexts[4].text = "Reflex: " + cardData.reflex.ToString();
+        cardTexts[5].text = "Aggression: " + cardData.aggression.ToString();
+        cardTexts[6].text = "Pace: " + cardData.pace.ToString();
+        cardTexts[7].text = "Marking: " + cardData.marking.ToString();
+        cardTexts[8].text = "Price: " + cardData.value.ToString();
     }
 }

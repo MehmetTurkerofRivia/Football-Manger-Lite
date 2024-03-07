@@ -1101,6 +1101,7 @@ MonoBehaviour:
   - {fileID: 1987867526}
   - {fileID: 1449212842}
   generatedCards: []
+  PlayerPurchasingPool: []
   playerCardPrefab: {fileID: 7444981286023044970, guid: bb7760d5ca9b26b43af23f8e0db32b0f, type: 3}
 --- !u!114 &1370027669
 MonoBehaviour:
