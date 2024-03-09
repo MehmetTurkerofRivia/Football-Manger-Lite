@@ -76,8 +76,8 @@ public class CardManager : MonoBehaviour
     }
     public void Purchasing(int buttonIndex)
     {
-        int cardIndex = buttonIndex; // Butonun index numarası, kartın index numarası olarak kullanılabilir (bu durumda aynı)
-        int cardId = ShowingCard[cardIndex].id; // Butona karşılık gelen kartın id'si
-        PlayerPurchasingPool.Add(generatedCards.FirstOrDefault(card => card.id == cardId)); // PurchasingPool listesine kartı ekleyin
+        int cardIndex = buttonIndex;
+        int cardId = ShowingCard[cardIndex].id;
+        PlayerPurchasingPool.Add(generatedCards.FirstOrDefault(card => card.id == cardId));
     }
 }
