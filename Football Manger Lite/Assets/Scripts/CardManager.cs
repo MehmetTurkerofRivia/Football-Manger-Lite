@@ -8,7 +8,8 @@ public class CardManager : MonoBehaviour
     public Transform[] cardPositions;
     public List<PlayerCardData> generatedCards = new List<PlayerCardData>();
     public List<PlayerCardData> PlayerPurchasingPool = new List<PlayerCardData>();
-    private List<PlayerCard> ShowingCard = new List<PlayerCard>();
+    [SerializeField] private List<PlayerCard> ShowingCard = new List<PlayerCard>();
+    [SerializeField] private List<Button> PurchasingButtons = new List<Button>();
     [SerializeField] PlayerCard playerCardPrefab;
     private PlayerCard currentPlayerCard;
     private void Start()
@@ -17,6 +18,10 @@ public class CardManager : MonoBehaviour
             GenerateRandomCardData();   
 
         ShowRandomCard();
+        for (int i = 0; i < PurchasingButtons.Count; i++)
+        {
+            PurchasingButtons[i] = ShowingCard[i].button;              
+        }
     }
 
     public void GenerateRandomCardData()
@@ -45,6 +50,7 @@ public class CardManager : MonoBehaviour
         randomCard.aggression = Random.Range(1, 8);
         randomCard.pace = Random.Range(1, 8);
         randomCard.marking = Random.Range(1, 8);
+        randomCard.id = Random.Range(0,10000);
         randomCard.value = 28 * (randomCard.shoot + randomCard.dribbling + randomCard.pas + randomCard.reflex + randomCard.aggression + randomCard.pace + randomCard.marking);
         return randomCard;
     }
@@ -68,8 +74,10 @@ public class CardManager : MonoBehaviour
         ShowingCard.Clear();
         ShowRandomCard();
     }
-    public void Purchasing(PlayerCardData cardData)
+    public void Purchasing(int buttonIndex)
     {
-        PlayerPurchasingPool.Add(cardData);           
+        int cardIndex = buttonIndex; // Butonun index numarası, kartın index numarası olarak kullanılabilir (bu durumda aynı)
+        int cardId = ShowingCard[cardIndex].id; // Butona karşılık gelen kartın id'si
+        PlayerPurchasingPool.Add(generatedCards.FirstOrDefault(card => card.id == cardId)); // PurchasingPool listesine kartı ekleyin
     }
 }

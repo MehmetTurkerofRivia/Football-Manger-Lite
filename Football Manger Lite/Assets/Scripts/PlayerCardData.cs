@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "NewPlayerCard", menuName = "Player Card")]
 public class PlayerCardData : ScriptableObject
 {
+    public Button button;
     public string playerName;
     public int shoot;
     public int dribbling;
@@ -12,4 +14,5 @@ public class PlayerCardData : ScriptableObject
     public int pace;
     public int marking;
     public int value;
+    public int id;
 }

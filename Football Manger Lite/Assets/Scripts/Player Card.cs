@@ -3,7 +3,9 @@ using UnityEngine.UI;
 
 public class PlayerCard : MonoBehaviour
 {
+    public int id;
     public Text[] cardTexts;
+    [SerializeField] public Button button;
     public void SetPlayer(PlayerCardData cardData)
     {
         cardTexts[0].text = cardData.playerName;
@@ -15,5 +17,7 @@ public class PlayerCard : MonoBehaviour
         cardTexts[6].text = "Pace: " + cardData.pace.ToString();
         cardTexts[7].text = "Reflex: " + cardData.reflex.ToString();            
         cardTexts[8].text = "Price: " + cardData.value.ToString();
+        id = cardData.id;
+
     }
 }
