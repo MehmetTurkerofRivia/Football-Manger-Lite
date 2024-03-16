@@ -2,6 +2,8 @@
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using CI.QuickSave;
+
 
 public class CardManager : MonoBehaviour
 {
@@ -15,12 +17,12 @@ public class CardManager : MonoBehaviour
     private void Start()
     {
         for (int i = 0; i < 1000; i++)
-            GenerateRandomCardData();   
+            GenerateRandomCardData();
 
         ShowRandomCard();
         for (int i = 0; i < PurchasingButtons.Count; i++)
         {
-            PurchasingButtons[i] = ShowingCard[i].button;              
+            PurchasingButtons[i] = ShowingCard[i].button;
         }
     }
 
@@ -50,14 +52,14 @@ public class CardManager : MonoBehaviour
         randomCard.aggression = Random.Range(1, 8);
         randomCard.pace = Random.Range(1, 8);
         randomCard.marking = Random.Range(1, 8);
-        randomCard.id = Random.Range(0,10000);
+        randomCard.id = Random.Range(0, 10000);
         randomCard.value = 28 * (randomCard.shoot + randomCard.dribbling + randomCard.pas + randomCard.reflex + randomCard.aggression + randomCard.pace + randomCard.marking);
         return randomCard;
     }
     private void ShowRandomCard()
     {
         for (int i = 0; i < cardPositions.Length; i++)
-        {                                                       
+        {
             int randomIndex = Random.Range(0, generatedCards.Count);
             PlayerCardData cardData = generatedCards[randomIndex];
             currentPlayerCard = Instantiate(playerCardPrefab, cardPositions[i]);
@@ -80,4 +82,6 @@ public class CardManager : MonoBehaviour
         int cardId = ShowingCard[cardIndex].id;
         PlayerPurchasingPool.Add(generatedCards.FirstOrDefault(card => card.id == cardId));
     }
+    var writer = QuickSaveWriter.Create("Player");
+    write
 }
