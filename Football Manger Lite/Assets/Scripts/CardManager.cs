@@ -16,6 +16,7 @@ public class CardManager : MonoBehaviour
     [SerializeField] private List<Button> PurchasingButtons = new List<Button>();
     [SerializeField] PlayerCard playerCardPrefab;
     private PlayerCard currentPlayerCard;
+
     private void Start()
     {
         for (int i = 0; i < 1000; i++)
@@ -26,6 +27,11 @@ public class CardManager : MonoBehaviour
         {
             PurchasingButtons[i] = ShowingCard[i].button;
         }
+        LoadPlayerPurchasingPool();
+    }
+    private void Update()
+    {
+        SavePlayerPurchasingPool();
     }
 
     public void GenerateRandomCardData()
@@ -84,5 +90,33 @@ public class CardManager : MonoBehaviour
         int cardId = ShowingCard[cardIndex].id;
         PlayerPurchasingPool.Add(generatedCards.FirstOrDefault(card => card.id == cardId));
     }
- 
+
+    public void SavePlayerPurchasingPool()
+    {
+        // PlayerPurchasingPool'u JSON formatında bir string'e dönüştür
+        string jsonData = JsonUtility.ToJson(PlayerPurchasingPool);
+
+        // PlayerPrefs'te "PlayerPurchasingPool" anahtarıyla sakla
+        PlayerPrefs.SetString("PlayerPurchasingPool", jsonData);
+
+        // PlayerPrefs verilerini hemen disk üzerine yazmak için bu satırı ekleyebilirsiniz
+        PlayerPrefs.Save();
+
+    }
+
+    public void LoadPlayerPurchasingPool()
+    {
+        if (PlayerPrefs.HasKey("PlayerPurchasingPool"))
+        {
+            // PlayerPrefs'ten "PlayerPurchasingPool" anahtarını al
+            string jsonData = PlayerPrefs.GetString("PlayerPurchasingPool");
+
+            // JSON string'i PlayerPurchasingPool listesine dönüştür
+            PlayerPurchasingPool = JsonUtility.FromJson<List<PlayerCardData>>(jsonData);
+        }
+        else
+        {
+            Debug.LogWarning("PlayerPurchasingPool verisi bulunamadı.");
+        }
+    }
 }
