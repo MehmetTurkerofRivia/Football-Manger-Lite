@@ -3,6 +3,8 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using CI.QuickSave;
+using UnityEngine.Windows;
+using System.IO;
 
 
 public class CardManager : MonoBehaviour
@@ -82,6 +84,5 @@ public class CardManager : MonoBehaviour
         int cardId = ShowingCard[cardIndex].id;
         PlayerPurchasingPool.Add(generatedCards.FirstOrDefault(card => card.id == cardId));
     }
-    var writer = QuickSaveWriter.Create("Player");
-    write
+ 
 }
